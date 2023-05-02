@@ -3,8 +3,11 @@ const Controller = require("../controllers/controller"); //exports our controlle
 const router  = Router(); ///creates a new router
 
 router.get("/", Controller.home_get);
+
 router.get("/create", Controller.create_get);
 router.post("/create", Controller.create_post);
 
+router.get("/signup", Controller.signup_get);
+router.post("/signup", Controller.signup_post);
 
 module.exports = router;
