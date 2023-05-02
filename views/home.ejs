@@ -1,8 +1,21 @@
 <%- include('partials/header'); -%>
 
 <div class="container">
+    <a href="/create">CREATE BLOG</a>
 
-    <h1>BLOGG HJEMMESIDE</h1>
+    <h1>ALL BLOGS</h1>
+    <div class="blogpost-container">
+        <%if(blogresult.length > 0){%>
+          <%blogresult.forEach(blog => {%>
+            <div class="blog-cont">
+              <h3><%=blog.title%></h3>
+              <p><b>AUTHOR:</b> <%=blog.author%></p>
+            </div>
+          <%})%>
+        <%}else{%>
+          <p>THERES NOTHING TO DISPLAY</p>
+        <%}%>
+      </div>
 
 </div>
 
