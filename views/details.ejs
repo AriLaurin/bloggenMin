@@ -1,0 +1,26 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+  <ul>
+    <% if (user){ %>
+    <li>Welcome, <%= user.email %></li>
+    <li><a href="/logout">Logout</a></li>
+    <li><a href="/create">Write A Blog</a></li>
+    <li><a href="/">Home</a></li>
+    <% } else { %>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup" class="btn">Sign up</a></li>
+    <% } %>
+  </ul>
+    <div class="blogpost-container">
+        <h2><%= blog.title %></h2>
+        <div class="content">
+          <p><%= blog.content %></p>
+        </div>
+      </div>
+      </div>
+
+</div>
+
+
+<%- include('partials/footer'); -%>

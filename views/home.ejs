@@ -5,6 +5,8 @@
     <% if (user){ %>
     <li>Welcome, <%= user.email %></li>
     <li><a href="/logout">Logout</a></li>
+    <li><a href="/create">Write A Blog</a></li>
+    <li><a href="/account">Account</a></li>
     <% } else { %>
     <li><a href="/login">Login</a></li>
     <li><a href="/signup" class="btn">Sign up</a></li>
@@ -15,10 +17,13 @@
     <div class="blogpost-container">
         <%if(blogresult.length > 0){%>
           <%blogresult.forEach(blog => {%>
-            <div class="blog-cont">
-              <h3><%=blog.title%></h3>
-              <p><b>AUTHOR:</b> <%=blog.author%></p>
-            </div>
+            <a class="single" href="/<%=blog._id%>">
+              <div class="blog-cont">
+                <h3><%=blog.title%></h3>
+                <p><b>AUTHOR:</b> <%=blog.author%></p>
+              </div>
+            </a>
+
           <%})%>
         <%}else{%>
           <p>THERES NOTHING TO DISPLAY</p>

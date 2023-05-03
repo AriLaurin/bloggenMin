@@ -1,0 +1,50 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+  <ul>
+    <% if (user){ %>
+    <li>Welcome, <%= user.email %></li>
+    <li><a href="/logout">Logout</a></li>
+    <li><a href="/create">Write A Blog</a></li>
+    <li><a href="/">Home</a></li>
+    <% } else { %>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup" class="btn">Sign up</a></li>
+    <% } %>
+  </ul>
+
+    <h1><%= user.email %> Blogs</h1>
+    <div class="blogpost-container">
+        <%if(blogs.length > 0){%>
+          <%blogs.forEach(blog => {%>
+            <a class="single" href="/<%=blog._id%>">
+                <div class="blog-cont">
+                    <h3><%=blog.title%></h3>
+                    <p><b>AUTHOR:</b> <%=blog.author%></p>
+                  </div>
+            </a>
+            <button class ="delete" data-doc="<%=blog._id%>" onclick="deleteTRASH('<%=blog._id%>')">DELETE</button>
+          <%})%>
+        <%}else{%>
+          <p>THERES NOTHING TO DISPLAY</p>
+        <%}%>
+      </div>
+
+</div>
+
+<script>
+  
+    function deleteTRASH(id) {
+      const endpoint = `/${id}`;
+      console.log(endpoint);
+      fetch(endpoint, {
+        method: "DELETE",
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    }
+  </script>
+
+
+<%- include('partials/footer'); -%>

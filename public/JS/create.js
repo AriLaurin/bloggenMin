@@ -8,7 +8,9 @@ blogButton.addEventListener("click", async (e) => {
   //form values
   const TITLE = form.TITLE.value
   const CONTENT = form.CONTENT.value
-  const AUTHOR = form.AUTHOR.value
+  const id = form.AUTHOR.dataset.doc
+
+  console.log(id);
 
 
 
@@ -16,7 +18,7 @@ blogButton.addEventListener("click", async (e) => {
         //sender data som lager bruker
         const res = await fetch('/create',{
             method: 'post',
-            body: JSON.stringify({title: TITLE, content: CONTENT, author: AUTHOR}),
+            body: JSON.stringify({title: TITLE, content: CONTENT, id: id}),
             headers: {'Content-Type': 'application/json'}
         })
         const blog = await res.json();
