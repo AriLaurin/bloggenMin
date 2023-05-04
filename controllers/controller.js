@@ -134,7 +134,7 @@ module.exports.account_get = async (req,res) => {
         jwt.verify(token, 'gnome secret', async (err, decodedToken) => {
            // console.log( "nuts " + decodedToken.id);
             const user = await User.findById(decodedToken.id);
-            console.log(user);
+            // console.log(user);
             await Blog.find({ author: user.email }).sort({ createdAt: -1})
             .then((result)=>{
                 res.render('account', {title: 'All blogs', blogs: result})
@@ -146,6 +146,15 @@ module.exports.account_get = async (req,res) => {
     }else{
         res.redirect('/login')
     }
+}
+
+module.exports.user_get = async (req,res) => {
+    const user = req.params.user; //req.params is what we write into the url & using :user in the route, we can grab what we wrote
+    await Blog.find({author: user})
+    .then((result) => {
+        res.render('user', {title: 'All blogs', blogs: result})
+    })
+
 }
 
 module.exports.blog_delete = (req,res) => {
@@ -162,8 +171,11 @@ module.exports.blog_delete = (req,res) => {
 module.exports.blogdetail_get = async (req,res) => {
         //getting the id we have
         const id = req.params.id; //whatever we called id in route
+        // const author = req.params.author;
+        console.log(req.params);
         Blog.findById(id)
         .then((result) => {
+            console.log(result);
             res.render("details", {blog: result, title: "Blog Details"}) //result is the single blog based on id
         })
         .catch((err) => {

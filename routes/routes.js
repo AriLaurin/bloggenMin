@@ -8,6 +8,7 @@ router.post("/create", Controller.create_post);
 
 router.get("/account", Controller.account_get);
 
+
 router.get("/signup", Controller.signup_get);
 router.post("/signup", Controller.signup_post);
 
@@ -16,7 +17,9 @@ router.post("/login", Controller.login_post);
 
 router.get("/logout", Controller.logout_get);
 
-router.get("/:id", Controller.blogdetail_get);
+
+router.get("/:user", Controller.user_get);
+router.get("/:author/:id", Controller.blogdetail_get);
 
 router.delete("/:id", Controller.blog_delete);
 

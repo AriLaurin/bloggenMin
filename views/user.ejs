@@ -6,24 +6,23 @@
     <li>Welcome, <%= user.email %></li>
     <li><a href="/logout">Logout</a></li>
     <li><a href="/create">Write A Blog</a></li>
-    <li><a href="/account">Account</a></li>
+    <li><a href="/">Home</a></li>
     <% } else { %>
     <li><a href="/login">Login</a></li>
     <li><a href="/signup" class="btn">Sign up</a></li>
     <% } %>
   </ul>
 
-    <h1>ALL BLOGS</h1>
+    <h1><%=blogs[0].author %> Blogs</h1>
     <div class="blogpost-container">
-        <%if(blogresult.length > 0){%>
-          <%blogresult.forEach(blog => {%>
+        <%if(blogs.length > 0){%>
+          <%blogs.forEach(blog => {%>
             <a class="single" href="/<%=blog.author%>/<%=blog._id%>">
-              <div class="blog-cont">
-                <h3><%=blog.title%></h3>
-                <p><b>AUTHOR:</b> <%=blog.author%></p>
-              </div>
+                <div class="blog-cont">
+                    <h3><%=blog.title%></h3>
+                    <p><b>AUTHOR:</b> <%=blog.author%></p>
+                  </div>
             </a>
-
           <%})%>
         <%}else{%>
           <p>THERES NOTHING TO DISPLAY</p>

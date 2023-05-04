@@ -14,7 +14,7 @@ const requireAuth = (req, res, next) => { //check auth status, apply this func t
                 console.log(err.message);
                 res.redirect("/login");
             } else {
-                console.log(decodedToken);
+                // console.log(decodedToken);
                 next(); //middleware always need next to continue
             }
         }); 
