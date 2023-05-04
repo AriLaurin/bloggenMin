@@ -1,6 +1,7 @@
 const { Router } = require("express");//we need the express router to plug into applications
 const Controller = require("../controllers/controller"); //exports our controller to get our functions
 const router  = Router(); ///creates a new router
+const {requireAuth} = require("../middleware/middleware");
 
 router.get("/", Controller.home_get);
 
@@ -17,9 +18,8 @@ router.post("/login", Controller.login_post);
 
 router.get("/logout", Controller.logout_get);
 
-
+router.get("/:author/:id", requireAuth, Controller.blogdetail_get);
 router.get("/:user", Controller.user_get);
-router.get("/:author/:id", Controller.blogdetail_get);
 router.post("/createComment", Controller.blogdetail_post);
 
 router.delete("/:id", Controller.blog_delete);
