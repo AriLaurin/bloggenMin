@@ -3,7 +3,7 @@
 <div class="container">
   <ul>
     <% if (user){ %>
-    <li>Welcome, <%= user.email %></li>
+    <li id="welcome-text">Welcome, <%= user.email %></li>
     <li><a href="/logout">Logout</a></li>
     <li><a href="/create">Write A Blog</a></li>
     <li><a href="/account">Account</a></li>
@@ -20,7 +20,7 @@
             <a class="single" href="/<%=blog.author%>/<%=blog._id%>">
               <div class="blog-cont">
                 <h3><%=blog.title%></h3>
-                <p><b>AUTHOR:</b> <%=blog.author%></p>
+                <p class="blog-text"><b>AUTHOR:</b> <%=blog.author%></p>
               </div>
             </a>
 

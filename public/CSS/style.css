@@ -1,5 +1,39 @@
 .blog-cont{
-    border-left: 0.5em solid black;
+    border-left: 0.5em solid #57CC99;
     padding-left: 1em;
     margin-bottom: 1em;
+}
+
+h1, h2, h3, p, a ,label, li, footer {
+    color: #57CC99;
+    font-family: Quicksand;
+}
+
+ul {
+    list-style-type: none;
+  }
+
+.blog-cont > h3, p{
+    color: aliceblue;
+}
+
+.blog-cont:hover{
+    color: #57CC99;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+body{
+    background-color: #2f2f30;
+}
+
+#welcome-text{
+    font-size: 2em;
+    color: aliceblue;
 }
