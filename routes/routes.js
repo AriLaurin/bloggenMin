@@ -20,6 +20,7 @@ router.get("/logout", Controller.logout_get);
 
 router.get("/:user", Controller.user_get);
 router.get("/:author/:id", Controller.blogdetail_get);
+router.post("/createComment", Controller.blogdetail_post);
 
 router.delete("/:id", Controller.blog_delete);
 

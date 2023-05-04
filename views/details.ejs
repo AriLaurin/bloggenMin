@@ -20,7 +20,34 @@
       </div>
       </div>
 
+      <h2>REPLY TO BLOG</h2>
+      <div class="comment-cont">
+        <form>
+          <label for="CONTENT">CONTENT</label>
+          <input type="text" name="CONTENT">
+          <input type="hidden" name="AUTHOR" data-doc="<%=user.email%>">
+          <input type="hidden" name="ORIGINALBLOG" data-doc="<%=blog._id%>">
+          <button id="commentsubmit" type="button">Send Comment</button>
+        </form>
+      </div>
+
+      <h2>ALL COMMENTS</h2>
+      <div class="commentpost-container">
+        <%if(comments.length > 0){%>
+          <%comments.forEach(comment => {%>
+              <div class="blog-cont">
+                <h3><%=comment.content%></h3>
+                <p><b>COMMENTED BY:</b> <%=comment.author%></p>
+              </div>
+
+          <%})%>
+        <%}else{%>
+          <p>THERE ARE NO COMMENTS</p>
+        <%}%>
+      </div>
+
 </div>
 
+<script src="/JS/details.js"></script>
 
 <%- include('partials/footer'); -%>

@@ -1,5 +1,6 @@
 const Blog = require("../models/Blog");
 const User = require("../models/User");
+const Comment = require("../models/Comment");
 const jwt = require("jsonwebtoken");
 
 //handle errors
@@ -172,13 +173,24 @@ module.exports.blogdetail_get = async (req,res) => {
         //getting the id we have
         const id = req.params.id; //whatever we called id in route
         // const author = req.params.author;
-        console.log(req.params);
-        Blog.findById(id)
-        .then((result) => {
-            console.log(result);
-            res.render("details", {blog: result, title: "Blog Details"}) //result is the single blog based on id
-        })
-        .catch((err) => {
-            res.render("404", {title: "Blog not found"});
-        })
+        // console.log(req.params);
+      const findBlog = await Blog.findById(id)
+      const comments = await Comment.find({originalBlog: id})
+
+            res.render("details", {blog: findBlog, comments: comments,  title: "Blog Details"}) //result is the single blog based on id
+
+}
+
+module.exports.blogdetail_post = async (req,res) => {
+
+    const {content, author, originalBlog} = req.body;
+
+   await Comment.create({content, author, originalBlog})
+    .then((result) => {
+        // console.log(result);
+        console.log("Comment added, " + result);
+    })
+    .catch((err) => {
+        res.render("404", {title: "Blog not found"});
+    })
 }
