@@ -35,9 +35,12 @@
       <div class="commentpost-container">
         <%if(comments.length > 0){%>
           <%comments.forEach(comment => {%>
-              <div class="blog-cont">
+              <div class="commentpost-result">
                 <h3><%=comment.content%></h3>
                 <p><b>COMMENTED BY:</b> <%=comment.author%></p>
+                <%if(user.email === blog.author){%>
+               <button class="remove-comment" data-doc="<%=comment._id%>" onclick="deleteTRASH('<%=comment._id%>')">Remove</button>
+                <%}%>
               </div>
 
           <%})%>

@@ -194,3 +194,14 @@ module.exports.blogdetail_post = async (req,res) => {
         res.render("404", {title: "Blog not found"});
     })
 }
+
+module.exports.comment_delete = (req,res) => {
+    const ID = req.params.id;
+    Comment.findByIdAndDelete(ID)
+    .then(result => {
+        res.json({redirect: "/"});
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}

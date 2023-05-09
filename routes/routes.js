@@ -18,6 +18,7 @@ router.post("/login", Controller.login_post);
 
 router.get("/logout", Controller.logout_get);
 
+router.delete("/details/:id", Controller.comment_delete);
 router.get("/:author/:id", requireAuth, Controller.blogdetail_get);
 router.get("/:user", Controller.user_get);
 router.post("/createComment", Controller.blogdetail_post);
