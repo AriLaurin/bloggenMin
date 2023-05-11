@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 
 const dbURI = process.env.host
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
-  .then((result) => app.listen(80))
+  .then((result) => app.listen(8080))
   .then(console.log("DATABASE STATUS: CONNECTED"))
   .then(console.log("SERVER STATUS: ONLINE"))
   .catch((err) => console.log(err));
